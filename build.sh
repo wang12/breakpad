@@ -22,8 +22,6 @@ export CXXFLAGS="-fPIC -g -O2 -Wall -Wno-unknown-pragmas -ffunction-sections -fd
 
 cd breakpad
 
-make clean
-
-./configure --prefix="${OUTPUT_DIR}" --build="${CUR_DIR}/build" --host=android -fPIC 
+./configure --prefix="${OUTPUT_DIR}" --build="${CUR_DIR}/build" --host=android
 
 make 

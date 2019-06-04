@@ -12,16 +12,18 @@ BUILD=arm-linux-androideabi
 export LD_LIBRARY_PATH=/opt/glibc-2.14/lib:$LD_LIBRARY_PATH
 export NDK=/home/xuxiaoguang/android-ndk-r10d
 export TOOLCHAINS=$NDK/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64
-export CC=$TOOLCHAINS/bin/{$BUILD}-gcc
-export CPP=$TOOLCHAINS/bin/{$BUILD}-gcc
-export CXX=$TOOLCHAINS/bin/{$BUILD}-g++
-export AR=$TOOLCHAINS/bin/{$BUILD}-ar
-export STRIP=$TOOLCHAINS/bin/{$BUILD}-strip
+export CC=$TOOLCHAINS/bin/${BUILD}-gcc
+export CPP=$TOOLCHAINS/bin/${BUILD}-gcc
+export CXX=$TOOLCHAINS/bin/${BUILD}-g++
+export AR=$TOOLCHAINS/bin/${BUILD}-ar
+export STRIP=$TOOLCHAINS/bin/${BUILD}-strip
 export CXXFLAGS="-fPIC -g -O2 -Wall -Wno-unknown-pragmas -ffunction-sections -fdata-sections -std=c++11"
 
 
 cd breakpad
 
-./configure --prefix="${OUTPUT_DIR}" --build="${CUR_DIR}/build" --host=armeabi
+make clean
+
+./configure --prefix="${OUTPUT_DIR}" --build="${CUR_DIR}/build" --host=android -fPIC 
 
 make 

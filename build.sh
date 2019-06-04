@@ -20,8 +20,10 @@ export STRIP=$TOOLCHAINS/bin/${BUILD}-strip
 export CXXFLAGS="-fPIC -g -O2 -Wall -Wno-unknown-pragmas -ffunction-sections -fdata-sections -std=c++11"
 
 
-cd breakpad
+rm -rf build/
+mkdir build
+cd build
 
-./configure --prefix="${OUTPUT_DIR}" --build="${CUR_DIR}/build" --host=android
+../breakpad/configure --prefix="${OUTPUT_DIR}" --host=android
 
 make 

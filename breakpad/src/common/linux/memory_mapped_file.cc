@@ -86,8 +86,11 @@ bool MemoryMappedFile::Map(const char* path, size_t offset) {
     sys_close(fd);
     return true;
   }
-
-  void* data = sys_mmap(NULL, file_len, PROT_READ, MAP_PRIVATE, fd, offset);
+#if defined(__aarch64__)
+    void* data = sys_mmap(NULL, file_len, PROT_READ, MAP_PRIVATE, fd, offset);  
+#else 
+    void* data = sys_mmap2(NULL, file_len, PROT_READ, MAP_PRIVATE, fd, offset);  
+#endif 
   sys_close(fd);
   if (data == MAP_FAILED) {
     return false;

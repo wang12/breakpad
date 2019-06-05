@@ -27,20 +27,6 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-LOCAL_PATH := $(call my-dir)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := test_google_breakpad
-LOCAL_SRC_FILES := test_breakpad.cpp
-LOCAL_STATIC_LIBRARIES += breakpad_client
-LOCAL_CFLAGS            += -DANDROID -DAPPLE -pie -fPIE
-LOCAL_LDFLAGS           += -DANDROID -DAPPLE -pie -fPIE
-include $(BUILD_EXECUTABLE)
-
-# If NDK_MODULE_PATH is defined, import the module, otherwise do a direct
-# includes. This allows us to build in all scenarios easily.
-ifneq ($(NDK_MODULE_PATH),)
-  $(call import-module,google_breakpad)
-else
-  include $(LOCAL_PATH)/../../google_breakpad/Android.mk
-endif
+APP_STL := stlport_static
+APP_ABI := armeabi-v7a arm64-v8a
+APP_CXXFLAGS := -std=c++11 -D__STDC_LIMIT_MACROS

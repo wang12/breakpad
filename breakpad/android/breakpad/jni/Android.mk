@@ -98,8 +98,8 @@ LOCAL_C_INCLUDES        := $(LOCAL_PATH)/src/common/android/include \
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
 LOCAL_EXPORT_LDLIBS     := -llog
 LOCAL_LDLIBS            := -llog
-LOCAL_CFLAGS            := -DANDROID -DAPPLE -pie -fPIE
-LOCAL_LDFLAGS           := -DANDROID -DAPPLE -pie -fPIE
+LOCAL_CFLAGS            := -DANDROID -DAPPLE -pie -fPIE -D_FILE_OFFSET_BITS=64 -fPIC
+LOCAL_LDFLAGS           := -DANDROID -DAPPLE -pie -fPIE -D_FILE_OFFSET_BITS=64 -fPIC
 
 include $(BUILD_STATIC_LIBRARY)
 

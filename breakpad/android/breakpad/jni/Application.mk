@@ -29,7 +29,7 @@
 
 NDK_TOOLCHAIN_VERSION := 4.9
 
-APP_STL := c++_static
+APP_STL := gnustl_static
 APP_ABI := arm64-v8a armeabi-v7a
 APP_PLATFORM := android-14
-APP_CXXFLAGS := -std=c++11 -D__STDC_LIMIT_MACROS
+APP_CXXFLAGS := -std=gnu++11 -D__STDC_LIMIT_MACROS

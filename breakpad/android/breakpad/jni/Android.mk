@@ -66,7 +66,8 @@ LOCAL_CPP_EXTENSION := .cc
 #   /tmp/cc8aMSoD.s: Assembler messages:
 #   /tmp/cc8aMSoD.s:132: Error: invalid immediate: 288 is out of range
 #   /tmp/cc8aMSoD.s:244: Error: invalid immediate: 296 is out of range
-LOCAL_ARM_MODE := arm
+
+
 
 # List of client source files, directly taken from Makefile.am
 LOCAL_SRC_FILES := \
@@ -100,6 +101,12 @@ LOCAL_EXPORT_LDLIBS     := -llog
 LOCAL_LDLIBS            := -llog
 LOCAL_CFLAGS            := -DANDROID -DAPPLE -pie -fPIE -D_FILE_OFFSET_BITS=64 -fPIC
 LOCAL_LDFLAGS           := -DANDROID -DAPPLE -pie -fPIE -D_FILE_OFFSET_BITS=64 -fPIC
+
+
+ifeq ($(APP_ABI), x86_64)
+$(warning  "ndk build arch x86_64")
+LOCAL_CFLAGS += -DANDROID_X86_64
+endif
 
 include $(BUILD_STATIC_LIBRARY)
 

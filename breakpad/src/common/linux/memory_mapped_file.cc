@@ -86,7 +86,7 @@ bool MemoryMappedFile::Map(const char* path, size_t offset) {
     sys_close(fd);
     return true;
   }
-#if defined(__aarch64__)
+#if defined(__aarch64__) || defined(ANDROID_X86_64)
     void* data = sys_mmap(NULL, file_len, PROT_READ, MAP_PRIVATE, fd, offset);  
 #else 
     void* data = sys_mmap2(NULL, file_len, PROT_READ, MAP_PRIVATE, fd, offset);  
